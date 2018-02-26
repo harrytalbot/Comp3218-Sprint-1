@@ -14,13 +14,21 @@ public class DestroyOnContact : MonoBehaviour {
         if (gameControllerObject != null)
         {
            gameController = gameControllerObject.GetComponent<GameController>();
+        }   
+        else
+        {
+            print("Couldn't find controller");
         }
 
-		GameObject playerObject = GameObject.FindWithTag ("Player");
+        GameObject playerObject = GameObject.FindWithTag ("Player");
 		if (playerObject != null) 
 		{
 			playerMover = playerObject.GetComponent<PlayerMover> ();
-		}
+        }
+        else
+        {
+            print("Couldn't find player");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -46,6 +54,8 @@ public class DestroyOnContact : MonoBehaviour {
         {
             // remove player
             Destroy(coll.gameObject);
+            gameController.GameOver();
+
         }
 
 
