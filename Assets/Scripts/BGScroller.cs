@@ -13,7 +13,7 @@ public class BGScroller : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {    
         float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSizeZ);
         transform.position = startPosition + Vector3.forward * newPosition;
 

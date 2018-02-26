@@ -21,7 +21,6 @@ public class FloodMover : MonoBehaviour {
     {
         // first, wait for the delay so the wave movement is not instant
         elapsedTime += Time.deltaTime;
-        print("" + elapsedTime);
         // once enough time has passed...
         if (elapsedTime > delay) {
             // and the wave should rise 

@@ -9,6 +9,7 @@ TagManager:
   - Water
   - WaterBody
   - DoubleJump
+  - PlayersFeet
   layers:
   - Default
   - TransparentFX
