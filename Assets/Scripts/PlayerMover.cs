@@ -113,4 +113,9 @@ public class PlayerMover : MonoBehaviour {
         localScale.x *= -1;
         transform.localScale = localScale;
     }
+
+    public bool isGrounded()
+    {
+        return grounded;
+    }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38074008, b: 0.35872707, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -296,6 +296,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 212877165094420512, guid: 083f2edd7c7677847be478aa9ff58b41,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61127237980705646, guid: 083f2edd7c7677847be478aa9ff58b41,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 083f2edd7c7677847be478aa9ff58b41, type: 2}
   m_IsPrefabParent: 0
@@ -500,6 +510,16 @@ Prefab:
     - target: {fileID: 1192061309537322, guid: 8e0380bb41c28574d9990d67b7f527a9, type: 2}
       propertyPath: m_TagString
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 114079885920724882, guid: 8e0380bb41c28574d9990d67b7f527a9,
+        type: 2}
+      propertyPath: delay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114079885920724882, guid: 8e0380bb41c28574d9990d67b7f527a9,
+        type: 2}
+      propertyPath: shouldRise
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e0380bb41c28574d9990d67b7f527a9, type: 2}

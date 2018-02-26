@@ -19,8 +19,12 @@ public class FallingPlatform : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            print("collision");
-            steppedOn = true;
+            PlayerMover playerMover = coll.gameObject.GetComponent<PlayerMover>();
+            if (playerMover.isGrounded())
+            {
+                print("collision");
+                steppedOn = true;
+            }
         }
     }
 
