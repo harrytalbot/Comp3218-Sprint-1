@@ -13,11 +13,7 @@ public class FloodMover : MonoBehaviour {
     void Start()
     {
         floodMover = gameObject.GetComponent<FloodMover>();
-        startPos = new Vector3(5.5f, -5.0f, 0.0f);
-       
-        transform.position = startPos;
-        //startPos = transform.position;
-        print("start pos " + startPos);
+        startPos = transform.position;
         delay = 2; elapsedTime = 0;
     }
 
@@ -28,12 +24,20 @@ public class FloodMover : MonoBehaviour {
         // once enough time has passed...
         if (elapsedTime > delay) {
             // and the wave should rise 
+            //BUG: jumps if the variable is changed to true after the delay has passed. Goes back to origin on change to false.
             if (shouldRise)
             {
-                Vector3 v = transform.position;
-                // Multiply with delta time to give movement smoothly with framerate
-                v.y += (floodSpeed * Time.deltaTime);
-                transform.position = v;
+                // Move all the waves by moving the parent's transform
+                Vector3 v = this.transform.position;
+                // elapsedTime - delay prevents jumping due to time passed
+
+                v.y += ((elapsedTime - delay) * floodSpeed);
+                distMoved = v;
+                this.transform.position = v;
+
+            }
+            else           
+            {
             }
         }
         

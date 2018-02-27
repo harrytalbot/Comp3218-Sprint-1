@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
 
     private void Update()
     {
+
         if (gameOver)
         {
             restart = true;
@@ -31,8 +32,7 @@ public class GameController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
-                //Application.LoadLevel(Application.loadedLevel);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }
