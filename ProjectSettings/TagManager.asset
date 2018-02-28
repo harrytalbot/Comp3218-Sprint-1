@@ -10,6 +10,7 @@ TagManager:
   - WaterBody
   - DoubleJump
   - PlayersFeet
+  - TutGameContoller
   layers:
   - Default
   - TransparentFX

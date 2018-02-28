@@ -34,32 +34,38 @@ public class DestroyOnContact : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         // check for player touching collider (not other coins)
-        if (coll.gameObject.tag == "Player" && gameObject.tag == "Coin")
+        if (coll.gameObject.tag == "Player")
         {
-            gameController.AddScore(1);
-            Destroy(gameObject);
+            if (gameObject.tag == "Coin")
+            {
+                gameController.AddScore(1);
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "DoubleJump")
+            {
+                playerMover.doubleJump = true;
+                Destroy(gameObject);
+            }
+
+            if (gameObject.tag == "Water")
+            {
+                // remove player
+                Destroy(coll.gameObject);
+                gameController.GameOver();
+            }
+
         }
+        // Destrpy anything the water touches as we don't need it any more...
 
-		if (coll.gameObject.tag == "Player" && gameObject.tag == "DoubleJump")
-		{
-			Destroy(gameObject);
-			playerMover.doubleJump = true;
-		}
-
-		if (coll.gameObject.tag == "Water" && gameObject.tag == "Coin") {
+        if (coll.gameObject.tag == "Water") {
 			Destroy (gameObject);
 		}
 
-        if (coll.gameObject.tag == "Player" && gameObject.tag == "Water")
-        {
-            // remove player
-            Destroy(coll.gameObject);
-            gameController.GameOver();
 
-        }
+        
 
 
     }
 
- 
+
 }

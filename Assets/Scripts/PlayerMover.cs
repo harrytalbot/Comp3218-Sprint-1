@@ -47,7 +47,9 @@ public class PlayerMover : MonoBehaviour {
 		} else {
 			// player is in the air, use air sprites
 			spriteAnimator.SetLayerWeight (1, 1);
-			spriteAnimator.SetBool ("landing", false);
+            spriteAnimator.SetTrigger("jump");
+
+            spriteAnimator.SetBool ("landing", false);
 		}
         MovePlayer();
     }
