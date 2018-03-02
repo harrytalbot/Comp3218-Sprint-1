@@ -19,8 +19,8 @@ public class FallingPlatform : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            PlayerMover playerMover = coll.gameObject.GetComponent<PlayerMover>();
-            if (playerMover.isGrounded())
+           // PlayerMover playerMover = coll.gameObject.GetComponent<PlayerMover>();
+           // if (playerMover.isGrounded())
             {
                 print("collision");
                 steppedOn = true;
@@ -41,14 +41,17 @@ public class FallingPlatform : MonoBehaviour {
 	void Update () {
 		if (steppedOn)
         {
+            print("steppedon");
             timer += Time.deltaTime;
             if (timer > delay)
             {
+                print("outoftime");
+
                 // disable collider so it falls through floor
                 GetComponent<Collider2D>().enabled = false;
                 GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionY;
                 GetComponent<Rigidbody2D>().gravityScale = 5;
-                // Disabling collider means that it won't be stopped by water, so manuall destroy it
+                // Disabling collider means that it won't be stopped by water, so manually destroy it
                 Object.Destroy(gameObject, 3.0f);
             }
         }

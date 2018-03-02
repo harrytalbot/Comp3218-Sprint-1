@@ -17,7 +17,7 @@ public class PlayerMover : MonoBehaviour {
     public int playerJumpPower = 5;
     public float moveX;
     // Params to check if on the ground
-    bool grounded = false;
+    public bool grounded = false;
     public Transform groundCheck;
     float groundRadius = 0.2f;
     public LayerMask whatIsGround = 9;
@@ -43,7 +43,6 @@ public class PlayerMover : MonoBehaviour {
 			spriteAnimator.SetLayerWeight (1, 0);
 			spriteAnimator.SetBool ("landing", true);
 			doubleJumping = false;
-
 		} else {
 			// player is in the air, use air sprites
 			spriteAnimator.SetLayerWeight (1, 1);

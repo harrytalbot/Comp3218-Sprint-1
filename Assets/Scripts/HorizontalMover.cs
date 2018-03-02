@@ -2,26 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// NOT WORKING
 public class HorizontalMover : MonoBehaviour
 {
-    public float delta = .3f;  // Amount to move left and right from the start point
-    public float verticalOffest;
     public float speed = 2.0f;
-    private Vector3 startPos;
-
+    public float dist = 0;
+    private float elapsedTime = 0;
+    private Rigidbody2D rb;
 
     void Start()
     {
-        startPos = transform.parent.gameObject.transform.position;
+        rb = gameObject.GetComponent<Rigidbody2D>();
+
     }
 
     void Update()
     {
-        Vector3 v = transform.parent.gameObject.transform.position;
-        v.x += delta * Mathf.Sin (Time.time * speed);
-        v.y += verticalOffest;
-        transform.position = v;
+        elapsedTime += Time.deltaTime;
+
+
+        if (elapsedTime > dist) {
+            print(elapsedTime);
+            rb.AddForce(Vector2.left * speed);
+            speed *= -1;
+            elapsedTime = 0;
+        }
+
     }
-
-
 }

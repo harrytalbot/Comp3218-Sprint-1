@@ -12,11 +12,10 @@ public class FloodMover : MonoBehaviour {
 
     void Start()
     {
+        transform.position = new Vector3(0, -1, 0);
         floodMover = gameObject.GetComponent<FloodMover>();
-        startPos = new Vector3(5.5f, -5.0f, 0.0f);
+        startPos = transform.position;
        
-        transform.position = startPos;
-        //startPos = transform.position;
         print("start pos " + startPos);
         delay = 2; elapsedTime = 0;
     }
