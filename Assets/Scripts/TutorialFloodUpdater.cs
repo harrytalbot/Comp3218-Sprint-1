@@ -36,7 +36,7 @@ public class TutorialFloodUpdater : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Player") {
+        if (coll.gameObject.tag == "Player" && coll.gameObject.GetComponent<PlayerMover>().isGrounded()) {
             print("reached");
             // move wave to just below this layer
             shouldMove = true;

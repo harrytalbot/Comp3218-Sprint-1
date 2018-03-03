@@ -17,7 +17,7 @@ public class FloodMover : MonoBehaviour {
         startPos = transform.position;
        
         print("start pos " + startPos);
-        delay = 2; elapsedTime = 0;
+        elapsedTime = 0;
     }
 
     void Update()
