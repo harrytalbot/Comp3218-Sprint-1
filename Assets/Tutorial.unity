@@ -1633,7 +1633,7 @@ Prefab:
     - target: {fileID: 114808685371108250, guid: 1a0d859f23ec840498583b1552ef3f83,
         type: 2}
       propertyPath: doubleJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a0d859f23ec840498583b1552ef3f83, type: 2}
