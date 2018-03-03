@@ -15,8 +15,6 @@ public class FloodMover : MonoBehaviour {
         transform.position = new Vector3(0, -1, 0);
         floodMover = gameObject.GetComponent<FloodMover>();
         startPos = transform.position;
-       
-        print("start pos " + startPos);
         elapsedTime = 0;
     }
 

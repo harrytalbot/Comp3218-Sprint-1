@@ -10,20 +10,21 @@ public class GameController : MonoBehaviour {
     public int score = 0;
     public Text scoreText;
 
+    private int saved = 0;
+
     private bool gameOver;
     private bool restart;
 
     // Use this for initialization
     private void Start()
     {
-        gameOver = false;
+         gameOver = false;
         restart = false;
         score = 0;
     }
 
     private void Update()
     {
-
         if (gameOver)
         {
             restart = true;
@@ -32,7 +33,9 @@ public class GameController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
             }
         }
     }
@@ -42,7 +45,6 @@ public class GameController : MonoBehaviour {
         gameOver = true;
         scoreText.text = scoreText.text + " - Press R to Restart!";
     }
-
 
     public void AddScore(int newScoreValue)
     {

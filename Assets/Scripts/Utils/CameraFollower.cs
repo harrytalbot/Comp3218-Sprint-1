@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollower : MonoBehaviour {
 
     [SerializeField]
-    private float xMin, xMax, yMin, yMax;
+    public float xMin, xMax, yMin, yMax;
 
     private Transform player;
 
