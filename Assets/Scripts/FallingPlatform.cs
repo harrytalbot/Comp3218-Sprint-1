@@ -22,7 +22,6 @@ public class FallingPlatform : MonoBehaviour {
            // PlayerMover playerMover = coll.gameObject.GetComponent<PlayerMover>();
            // if (playerMover.isGrounded())
             {
-                print("collision");
                 steppedOn = true;
             }
         }
@@ -41,11 +40,9 @@ public class FallingPlatform : MonoBehaviour {
 	void Update () {
 		if (steppedOn)
         {
-            print("steppedon");
             timer += Time.deltaTime;
             if (timer > delay)
             {
-                print("outoftime");
 
                 // disable collider so it falls through floor
                 GetComponent<Collider2D>().enabled = false;
