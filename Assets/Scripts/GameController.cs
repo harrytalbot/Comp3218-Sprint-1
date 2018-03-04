@@ -8,17 +8,23 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public int score = 0;
-    public Text scoreText;
-
-    private int saved = 0;
+    public Text scoreText, gameOverText, doubleJumpText;
 
     private bool gameOver;
     private bool restart;
 
+    static private bool checkPoint = false;
+    GameObject playerObject;
+
     // Use this for initialization
     private void Start()
     {
-         gameOver = false;
+        playerObject = GameObject.FindWithTag("Player");
+        if (checkPoint)
+        {
+            playerObject.transform.position = new Vector3(-9, 51, 0);
+        }
+        gameOver = false;
         restart = false;
         score = 0;
     }
@@ -34,7 +40,7 @@ public class GameController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.R))
             {
 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                Initiate.Fade(SceneManager.GetActiveScene().name, Color.cyan, 0.5f);
 
             }
         }
@@ -43,8 +49,17 @@ public class GameController : MonoBehaviour {
     public void GameOver()
     {
         gameOver = true;
-        scoreText.text = scoreText.text + " - Press R to Restart!";
+        if (playerObject.transform.position.y > 50)
+            checkPoint = true;
+        gameOverText.text = "GAME OVER\n - Press R to Restart! - ";
     }
+
+    public void goToMainMenu()
+    {
+        gameOver = true;
+        SceneManager.LoadScene(SceneManager.GetSceneByName("Menu").buildIndex);
+    }
+
 
     public void AddScore(int newScoreValue)
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DestroyOnContact : MonoBehaviour {
 
-    // public GameObject asteriodExplosion, playerExplosion;
     public GameController gameController;
 	public PlayerMover playerMover;
 
@@ -44,6 +43,7 @@ public class DestroyOnContact : MonoBehaviour {
             if (gameObject.tag == "DoubleJump")
             {
                 playerMover.doubleJump = true;
+                gameController.doubleJumpText.text = "Double Jump Enabled!";
                 Destroy(gameObject);
             }
 

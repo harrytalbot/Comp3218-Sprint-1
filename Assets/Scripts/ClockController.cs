@@ -28,7 +28,7 @@ public class ClockController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D coll)
     {
 
-        // check for player touching collider (not other coins)
+        // check for player touching collider 
         if (coll.gameObject.tag == "Player")
         {
             if (!beenUsed)
