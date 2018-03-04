@@ -11,6 +11,7 @@ TagManager:
   - DoubleJump
   - PlayersFeet
   - MovingPlatform
+  - Flood
   layers:
   - Default
   - TransparentFX
