@@ -33,7 +33,6 @@ public class ClockController : MonoBehaviour
         {
             if (!beenUsed)
             {
-                print("clock");
                 // tell the flood it can't move for 2 seconds
                 floodMover.waitTime = Time.time + waitTime;
                 beenUsed = true;

@@ -8,12 +8,15 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public int score = 0;
-    public Text scoreText, gameOverText, doubleJumpText;
+    public Text scoreText, gameOverText, doubleJumpText, floodSpeedText;
 
     private bool gameOver;
     private bool restart;
 
+    // need these to persist through scene change
+    static public bool isTutorialMode;
     static private bool checkPoint = false;
+
     GameObject playerObject;
 
     // Use this for initialization
@@ -39,9 +42,13 @@ public class GameController : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-
                 Initiate.Fade(SceneManager.GetActiveScene().name, Color.cyan, 0.5f);
-
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Initiate.Fade("Menu", Color.cyan, 0.5f);
+                //clear the checkpoint so if the tutorial is selected again it won't start from level 4
+                checkPoint = false;
             }
         }
     }
@@ -49,17 +56,11 @@ public class GameController : MonoBehaviour {
     public void GameOver()
     {
         gameOver = true;
-        if (playerObject.transform.position.y > 50)
+        // only save checkpoint if in tutorial mode, or playing main game will save progress too
+        if (playerObject.transform.position.y > 50 && isTutorialMode)
             checkPoint = true;
-        gameOverText.text = "GAME OVER\n - Press R to Restart! - ";
+        gameOverText.text = "GAME OVER\n - Press R to Restart! -\n - Press M for Main Menu - ";
     }
-
-    public void goToMainMenu()
-    {
-        gameOver = true;
-        SceneManager.LoadScene(SceneManager.GetSceneByName("Menu").buildIndex);
-    }
-
 
     public void AddScore(int newScoreValue)
     {
@@ -70,6 +71,10 @@ public class GameController : MonoBehaviour {
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
+    }
+    public void UpdateSpeed(float speed)
+    {
+        floodSpeedText.text = "Flood Speed: " + speed;
     }
 
 }

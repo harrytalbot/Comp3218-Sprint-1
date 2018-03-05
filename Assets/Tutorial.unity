@@ -796,7 +796,7 @@ Prefab:
     - target: {fileID: 114079885920724882, guid: 8e0380bb41c28574d9990d67b7f527a9,
         type: 2}
       propertyPath: floodSpeed
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1681824894568304, guid: 8e0380bb41c28574d9990d67b7f527a9, type: 2}
       propertyPath: m_TagString
@@ -5593,7 +5593,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 400, y: -500}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631632007
 MonoBehaviour:
@@ -13526,6 +13526,7 @@ MonoBehaviour:
   scoreText: {fileID: 1164039825}
   gameOverText: {fileID: 631632007}
   doubleJumpText: {fileID: 245003530}
+  floodSpeedText: {fileID: 0}
 --- !u!1001 &1753879280
 Prefab:
   m_ObjectHideFlags: 0
