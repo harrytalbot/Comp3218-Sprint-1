@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4896299114717154}
   m_Layer: 8
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: PlayersFeet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1049038994291594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: -11, y: 4, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 4896299114717154}
@@ -109,7 +109,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.19, y: 0.34}
+    oldSize: {x: 0.21, y: 0.35}
     newSize: {x: 0.19, y: 0.34}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -148,17 +148,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 3
   lookingLeft: 0
-  playerJumpPower: 750
+  playerJumpPower: 800
   moveX: 0
+  grounded: 0
   groundCheck: {fileID: 4896299114717154}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 520
   boundry:
-    xMin: -2.6
-    xMax: 17
-    yMin: -3.6
-    yMax: 40
+    xMin: -15
+    xMax: 15
+    yMin: -1
+    yMax: 70
+  doubleJump: 0
 --- !u!212 &212543140366365632
 SpriteRenderer:
   m_ObjectHideFlags: 1

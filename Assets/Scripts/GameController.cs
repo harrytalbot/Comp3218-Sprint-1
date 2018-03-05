@@ -7,11 +7,13 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-    public int score = 0;
-    public Text scoreText, gameOverText, doubleJumpText, floodSpeedText;
+    public int score;
+    public Text scoreText, gameOverText, doubleJumpText, floodSpeedText, timerText;
 
+    private float time;
     private bool gameOver;
     private bool restart;
+    public bool runTimer;
 
     // need these to persist through scene change
     static public bool isTutorialMode;
@@ -30,10 +32,21 @@ public class GameController : MonoBehaviour {
         gameOver = false;
         restart = false;
         score = 0;
+        // timer doesn't exist in tutorial mode
+        if (!isTutorialMode)
+        {
+            time = 0;
+            timerText.text = "00:00";
+        }
     }
 
     private void Update()
     {
+        if (runTimer)
+        {
+            updateTimer();
+        }
+
         if (gameOver)
         {
             restart = true;
@@ -56,6 +69,12 @@ public class GameController : MonoBehaviour {
     public void GameOver()
     {
         gameOver = true;
+        if (!isTutorialMode)
+        {
+            //stop timer
+            runTimer = false;
+        }
+
         // only save checkpoint if in tutorial mode, or playing main game will save progress too
         if (playerObject.transform.position.y > 50 && isTutorialMode)
             checkPoint = true;
@@ -76,5 +95,13 @@ public class GameController : MonoBehaviour {
     {
         floodSpeedText.text = "Flood Speed: " + speed;
     }
-
+    
+    void updateTimer()
+    {
+        time += Time.deltaTime;
+        int mseconds = (int)((time % 1)*100); // calculate the milliseconds
+        int seconds = (int) time % 60; // calculate the seconds
+        int minutes = (int) time / 60; // calculate the minutes
+        timerText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + mseconds.ToString("D2");
+    }
 }

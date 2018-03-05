@@ -30,6 +30,7 @@ public class FloodStarter : MonoBehaviour
         {   
             gameController.UpdateSpeed(floodMover.floodSpeed);
             floodMover.shouldRise = true;
+            gameController.runTimer = true;
 
         }
     }
