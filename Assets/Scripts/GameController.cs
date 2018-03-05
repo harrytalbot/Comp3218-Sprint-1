@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
 
     public int score;
     public Text scoreText, gameOverText, doubleJumpText, floodSpeedText, timerText;
+    public int doubleJumpMax = 15;
+    public int doubleJumpAmount = 0;
 
     private float time;
     private bool gameOver;
@@ -29,7 +31,8 @@ public class GameController : MonoBehaviour {
         {
             playerObject.transform.position = new Vector3(-9, 51, 0);
             // player will need to be able to double jump
-            playerObject.GetComponent<PlayerMover>().doubleJump = true;
+            playerObject.GetComponent<PlayerMover>().doubleJumpEnabled = true;
+            enableDoubleJump();
         }
         gameOver = false;
         restart = false;
@@ -89,6 +92,27 @@ public class GameController : MonoBehaviour {
         UpdateScore();
     }
 
+    public bool updateDoubleJump(int change)
+    {
+        doubleJumpAmount += change;
+        if(doubleJumpAmount > 0)
+        {
+            doubleJumpText.text = "Double Jump Enabled: " + doubleJumpAmount;
+            return true;
+        }
+        else
+        {
+            doubleJumpText.text = "";
+            playerObject.GetComponent<PlayerMover>().doubleJumpEnabled = false;
+            return false;
+        }
+    }
+
+    public void enableDoubleJump()
+    {
+        updateDoubleJump(doubleJumpMax);
+    }
+
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
@@ -97,7 +121,7 @@ public class GameController : MonoBehaviour {
     {
         floodSpeedText.text = "Flood Speed: " + speed;
     }
-        
+    
     void updateTimer()
     {
         time += Time.deltaTime;

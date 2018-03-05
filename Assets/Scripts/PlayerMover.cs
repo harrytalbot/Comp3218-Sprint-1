@@ -11,6 +11,8 @@ public class Boundry
 
 public class PlayerMover : MonoBehaviour {
 
+    //GameController
+    public GameController gameController;
     // Player Movement Parameters
     public int playerSpeed = 10;
     public bool lookingLeft = true;
@@ -25,8 +27,11 @@ public class PlayerMover : MonoBehaviour {
 	public Boundry boundry;
     // Animator for the player's sprite  
 	private Animator spriteAnimator;
-	public bool doubleJump;
+	public bool doubleJumpEnabled;
 	private bool doubleJumping;
+    private bool tutLevel4Reached;
+    public Rigidbody2D doubleJump;
+    public GameObject doubleJumpRespawn;
 
 	void Start () {
 		spriteAnimator = GetComponent<Animator> ();
@@ -72,10 +77,16 @@ public class PlayerMover : MonoBehaviour {
 			if (grounded) {
 				grounded = false;
 				Jump ();
-			}else if (doubleJump && !doubleJumping) {
+			}else if (doubleJumpEnabled && !doubleJumping) {
 				doubleJumping = true;
 				Jump ();
-				}
+                //if the player has ran out of double jumps, and is still in the tutorial. 
+                if (!gameController.updateDoubleJump(-1) && !tutLevel4Reached)
+                {
+                    //Spawn another doubleJump at the location of doubleJumpRespawn
+                    Instantiate(doubleJump, doubleJumpRespawn.transform.position, doubleJumpRespawn.transform.rotation);
+                }
+			}
         }
 
         // Make sure the sprite is facing the right way
@@ -115,7 +126,15 @@ public class PlayerMover : MonoBehaviour {
         transform.localScale = localScale;
     }
 
-    public bool isGrounded()
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.gameObject.tag == "Level4")
+        {
+            tutLevel4Reached = true;
+        }
+    }
+
+        public bool isGrounded()
     {
         return grounded;
     }

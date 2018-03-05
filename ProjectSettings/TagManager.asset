@@ -12,6 +12,7 @@ TagManager:
   - PlayersFeet
   - MovingPlatform
   - Flood
+  - Level4
   layers:
   - Default
   - TransparentFX
