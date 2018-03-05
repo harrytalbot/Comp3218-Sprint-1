@@ -738,6 +738,11 @@ Prefab:
       propertyPath: delay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114079885920724882, guid: 8e0380bb41c28574d9990d67b7f527a9,
+        type: 2}
+      propertyPath: yMax
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114966091435964754, guid: 8e0380bb41c28574d9990d67b7f527a9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8e0380bb41c28574d9990d67b7f527a9, type: 2}
