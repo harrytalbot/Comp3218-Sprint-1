@@ -9,7 +9,6 @@ public class FloodMover : MonoBehaviour
 
     private float startTime;
     private Vector3 startPos, distMoved;
-    private FloodMover floodMover;
 
     public bool shouldRise;
     // time sent by the clock controller, used to stop movement
@@ -19,8 +18,6 @@ public class FloodMover : MonoBehaviour
     {
         waitTime = Time.time;
         transform.position = new Vector3(0, -1, 0);
-        floodMover = gameObject.GetComponent<FloodMover>();
-        startPos = transform.position;
         elapsedTime = 0;
     }
 

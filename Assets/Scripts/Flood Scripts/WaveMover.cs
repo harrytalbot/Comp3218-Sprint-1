@@ -7,13 +7,6 @@ public class WaveMover : MonoBehaviour
     public float delta = .3f;  // Amount to move left and right from the start point
     public float verticalOffest;
     public float speed = 2.0f;
-    private Vector3 startPos;
-
-
-    void Start()
-    {
-        startPos = transform.parent.gameObject.transform.position;
-    }
 
     void Update()
     {
