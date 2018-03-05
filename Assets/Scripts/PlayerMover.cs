@@ -74,9 +74,6 @@ public class PlayerMover : MonoBehaviour {
 				Jump ();
 			}else if (doubleJump && !doubleJumping) {
 				doubleJumping = true;
-				Vector3 v = gameObject.GetComponent<Rigidbody2D> ().velocity;
-				v.y = 0;
-				gameObject.GetComponent<Rigidbody2D> ().velocity = v;
 				Jump ();
 				}
         }
@@ -100,6 +97,9 @@ public class PlayerMover : MonoBehaviour {
 
     void Jump()
     {
+        Vector3 v = gameObject.GetComponent<Rigidbody2D>().velocity;
+        v.y = 0;
+        gameObject.GetComponent<Rigidbody2D>().velocity = v;
         // Make the player jump and update the sprite float 
         spriteAnimator.SetFloat("speed", Mathf.Abs (moveX));
 		spriteAnimator.SetTrigger("jump");
