@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour {
         if (checkPoint)
         {
             playerObject.transform.position = new Vector3(-9, 51, 0);
+            // player will need to be able to double jump
+            playerObject.GetComponent<PlayerMover>().doubleJump = true;
         }
         gameOver = false;
         restart = false;
@@ -95,7 +97,7 @@ public class GameController : MonoBehaviour {
     {
         floodSpeedText.text = "Flood Speed: " + speed;
     }
-    
+        
     void updateTimer()
     {
         time += Time.deltaTime;
