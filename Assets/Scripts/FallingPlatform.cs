@@ -19,8 +19,8 @@ public class FallingPlatform : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-           // PlayerMover playerMover = coll.gameObject.GetComponent<PlayerMover>();
-           // if (playerMover.isGrounded())
+            PlayerMover playerMover = coll.gameObject.GetComponent<PlayerMover>();
+            if (playerMover.isGrounded())
             {
                 steppedOn = true;
             }

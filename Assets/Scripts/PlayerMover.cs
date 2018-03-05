@@ -16,22 +16,27 @@ public class PlayerMover : MonoBehaviour {
     // Player Movement Parameters
     public int playerSpeed = 10;
     public bool lookingLeft = true;
-    public int playerJumpPower = 5;
     public float moveX;
+
+    // Params about jumping
+    public int playerJumpPower = 5;
+    private bool doubleJumping;
+    public int doubleJumpsRemaining = 0;
+    public Rigidbody2D doubleJump;
+    public GameObject doubleJumpRespawn;
+
     // Params to check if on the ground
     public bool grounded = false;
     public Transform groundCheck;
     float groundRadius = 0.2f;
     public LayerMask whatIsGround = 9;
+
     // Limits of Player Movement
 	public Boundry boundry;
+
     // Animator for the player's sprite  
 	private Animator spriteAnimator;
-	public bool doubleJumpEnabled;
-	private bool doubleJumping;
-    private bool tutLevel4Reached;
-    public Rigidbody2D doubleJump;
-    public GameObject doubleJumpRespawn;
+    
 
 	void Start () {
 		spriteAnimator = GetComponent<Animator> ();
@@ -77,11 +82,16 @@ public class PlayerMover : MonoBehaviour {
 			if (grounded) {
 				grounded = false;
 				Jump ();
-			}else if (doubleJumpEnabled && !doubleJumping) {
+                // correction: no need to check if is enabled, will be enabled if he has jumps
+                // so just check if he's not already jumping and has jumps
+			}else if (!doubleJumping && doubleJumpsRemaining > 0) {
 				doubleJumping = true;
+                doubleJumpsRemaining--;
 				Jump ();
-                //if the player has ran out of double jumps, and is still in the tutorial. 
-                if (!gameController.updateDoubleJump(-1) && !tutLevel4Reached)
+                // make the controller update the view
+                gameController.updateDoubleJump(doubleJumpsRemaining);
+                //if the player has ran out of double jumps, and is above the powerup level, and is in the tutorial
+                if (doubleJumpsRemaining == 0 && transform.position.y > 30 && GameController.isTutorialMode)
                 {
                     //Spawn another doubleJump at the location of doubleJumpRespawn
                     Instantiate(doubleJump, doubleJumpRespawn.transform.position, doubleJumpRespawn.transform.rotation);
@@ -117,6 +127,12 @@ public class PlayerMover : MonoBehaviour {
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower);
     }
 
+    public int pickupJumps()
+    {
+        doubleJumpsRemaining += 10;
+        return doubleJumpsRemaining;
+    }
+
     void TurnAround()
     {
         // Flip the player sprite so they look the right way
@@ -126,14 +142,7 @@ public class PlayerMover : MonoBehaviour {
         transform.localScale = localScale;
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if(coll.gameObject.tag == "Level4")
-        {
-            tutLevel4Reached = true;
-        }
-    }
-
+ 
         public bool isGrounded()
     {
         return grounded;

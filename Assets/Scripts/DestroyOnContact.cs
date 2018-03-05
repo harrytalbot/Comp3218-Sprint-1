@@ -42,8 +42,8 @@ public class DestroyOnContact : MonoBehaviour {
             }
             if (gameObject.tag == "DoubleJump")
             {
-                playerMover.doubleJumpEnabled = true;
-                gameController.enableDoubleJump();
+                int jumps = coll.gameObject.GetComponent<PlayerMover>().pickupJumps();
+                gameController.updateDoubleJump(jumps);
                 Destroy(gameObject);
             }
 
