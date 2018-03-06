@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour {
         playerObject = GameObject.FindWithTag("Player");
         if (checkPoint && isTutorialMode)
         {
-            playerObject.transform.position = new Vector3(-9, 51, 0);
+            playerObject.transform.position = new Vector3(-4, 51, 0);
             // player will need to be able to double jump
             playerObject.GetComponent<PlayerMover>().doubleJumpsRemaining = 10;
             updateDoubleJump(10);
