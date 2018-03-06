@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour {
     private void Start()
     {
         playerObject = GameObject.FindWithTag("Player");
-        if (checkPoint)
+        if (checkPoint && isTutorialMode)
         {
             playerObject.transform.position = new Vector3(-9, 51, 0);
             // player will need to be able to double jump
@@ -80,7 +80,13 @@ public class GameController : MonoBehaviour {
 
         // only save checkpoint if in tutorial mode, or playing main game will save progress too
         if (playerObject.transform.position.y > 50 && isTutorialMode)
+        {
             checkPoint = true;
+        }
+        else
+        {
+            checkPoint = false;
+        }
         gameOverText.text = "GAME OVER\n - Press R to Restart! -\n - Press M for Main Menu - ";
     }
 

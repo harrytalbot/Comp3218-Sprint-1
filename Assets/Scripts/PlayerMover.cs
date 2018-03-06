@@ -90,8 +90,8 @@ public class PlayerMover : MonoBehaviour {
 				Jump ();
                 // make the controller update the view
                 gameController.updateDoubleJump(doubleJumpsRemaining);
-                //if the player has ran out of double jumps, and is above the powerup level, and is in the tutorial
-                if (doubleJumpsRemaining == 0 && transform.position.y > 30 && GameController.isTutorialMode)
+                //if the player is in the tutorial and has less than 10 double jumps, and is above the powerup level
+                if (doubleJumpsRemaining < 10 && transform.position.y > 30 && GameController.isTutorialMode)
                 {
                     //Spawn another doubleJump at the location of doubleJumpRespawn
                     Instantiate(doubleJump, doubleJumpRespawn.transform.position, doubleJumpRespawn.transform.rotation);
